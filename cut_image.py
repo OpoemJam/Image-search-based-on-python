@@ -10,7 +10,7 @@ import sys
 #将图片填充为正方形
 def fill_image(image):
     width, height = image.size
-    #选取长和宽中较大值作为新图片的
+    #选取长和宽中较大值作为新图片的边长
     new_image_length = width if width > height else height
     #生成新图片[白底]
     new_image = Image.new(image.mode, (new_image_length, new_image_length), color='white')
