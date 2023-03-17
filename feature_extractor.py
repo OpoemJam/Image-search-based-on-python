@@ -7,8 +7,8 @@ import numpy as np
 
 class FeatureExtractor:
     def __init__(self):
-        base_model = VGG16(weights='imagenet')
-        self.model = Model(inputs=base_model.input, outputs=base_model.get_layer('fc1').output)
+        base_model = VGG16(weights='imagenet')  #Use VGG-16 as the architecture and ImageNet for the weight
+        self.model = Model(inputs=base_model.input, outputs=base_model.get_layer('fc1').output) #Customize the model to return features from fully-connected layer
 
     def extract(self, img):
         """

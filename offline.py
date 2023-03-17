@@ -10,4 +10,4 @@ if __name__ == '__main__':
         print(img_path)  # e.g., ./static/img/xxx.jpg
         feature = fe.extract(img=Image.open(img_path))
         feature_path = Path("./static/feature") / (img_path.stem + ".npy")  # e.g., ./static/feature/xxx.npy
-        np.save(feature_path, feature)
+        np.save(feature_path, feature)  #save the numpy array(.npy) on designated path
