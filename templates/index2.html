@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>图像裁剪</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.min.css" />
+</head>
+<body>
+	<a href = "search">
+    	<button>搜索图片</button>
+	</a>
+	<a href = "predict">
+    	<button>图片识别</button>
+	<br>
+	</a>
+	<input type="file" id="inputImage" name="file" accept="image/*">
+	<br>
+	<div>
+		<img id="image" src="" alt="Picture">
+	</div>
+	<br>
+	<div>
+		<button id="crop">Crop Image</button>
+		<a id="download" href="#" download="cropped_image.png">下载图像</a>
+	</div>
+	<script>
+		var cropper;
+		var image = document.getElementById('image');
+		var inputImage = document.getElementById('inputImage');
+		var crop = document.getElementById('crop');
+		var download = document.getElementById('download');
+
+		inputImage.addEventListener('change', function(e) {
+			var files = e.target.files;
+			var done = function(url) {
+				image.src = url;
+				cropper = new Cropper(image, {
+					aspectRatio: 1,
+					viewMode: 1,
+					preview: '.preview'
+				});
+			};
+			var reader;
+			var file;
+			var url;
+			if (files && files.length > 0) {
+				file = files[0];
+				if (URL) {
+					done(URL.createObjectURL(file));
+				} else if (FileReader) {
+					reader = new FileReader();
+					reader.onload = function(e) {
+						done(reader.result);
+					};
+					reader.readAsDataURL(file);
+				}
+			}
+		});
+
+		crop.addEventListener('click', function() {
+			var initialAvatarURL;
+			var canvas;
+			canvas = cropper.getCroppedCanvas({
+				width: 224,
+				height: 224,
+			});
+			initialAvatarURL = image.src;
+			image.src = canvas.toDataURL();
+			download.href = canvas.toDataURL();
+			cropper.destroy();
+			cropper = null;
+		});
+	</script>
+</body>
+</html>
