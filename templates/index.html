@@ -2,11 +2,14 @@
 <html>
     <head><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></head>
     <body>
-         <a href = "crop">
-    	<button>裁剪图片</button>
+         	<a href = "crop">
+    	<button>预处理图像</button>
 	</a>
-	<a href = "predict">
-    	<button>图片识别</button>
+	<a href = "text">
+    	<button>文字图片搜索</button>
+	</a>
+	<a href = "upload">
+    	<button>上传图片至数据库</button>
 	</a>
         <div class="container">
             <h1>基于Python的简易图像搜索引擎</h1>
@@ -14,11 +17,15 @@
                 <input type="file" name="query_img"><br>
                 <input type="submit">
             </form>
-            <h2>Query:</h2>
+            <h2>搜索图像:</h2>
             {% if query_path %}
             <img src="{{ query_path }}" width="300px">
             {% endif %}
-            <h2>Results:</h2>
+
+            <h2>你可能在找:<h2>
+            <div id="query_describe">{{query_describe}}<div>
+
+            <h2>搜索结果:</h2>
             {% for score in scores %}
             <figure style="float: left; margin-right: 20px; margin-bottom: 20px;">
                 <img src="{{ score[1] }}" height="200px">
