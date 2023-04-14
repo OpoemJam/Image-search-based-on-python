@@ -9,7 +9,6 @@ from flask import Flask, redirect, url_for, request, render_template, Response, 
 
 from pathlib import Path
 
-
 app = Flask(__name__)
 
 # Read image features
@@ -22,7 +21,7 @@ for feature_path in Path("./static/feature").glob("*.npy"):
     img_paths.append(Path("./static/img") / (feature_path.stem + ".jpg"))   #destinated image path and feature path
 features = np.array(features)
 
-@app.route('/search', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
         file = request.files['query_img']
@@ -39,6 +38,7 @@ def index():
         scores = [(dists[id], img_paths[id]) for id in ids]# output the top30 images and print their distance
         
         describe=("黑腿信天翁是一种凶猛的海鸟")
+        
         return render_template('index.html',
                                query_describe=describe,
                                query_path=uploaded_img_path,
@@ -54,6 +54,28 @@ def crop():
 @app.route('/text', methods=['GET', 'POST'])
 def TBIR():
     return render_template('index3.html')
+
+@app.route('/upload', methods=['GET', 'POST'])
+def upload():
+    if request.method == 'POST':
+        file = request.files['addtodatabaseimg']
+        img = Image.open(file.stream)
+        uploaded_database_img = datetime.now().isoformat().replace(":", ".") + "_" + file.filename
+        img.save("static/img/"+uploaded_database_img)
+        img.save("static/feature/"+uploaded_database_img)
+        
+        dir_path="static/feature/"
+        old_form=".jpg"
+        for filename in os.listdir(dir_path):
+            if filename.endswith(old_form):
+                new_filename = filename[:-len(old_form)] + ".npy"
+                os.rename(os.path.join(dir_path, filename), os.path.join(dir_path, new_filename))    
+                
+        uploadsuccess="上传成功"
+        return render_template('index4.html',
+                               query_describe=uploadsuccess)
+    else:
+        return render_template('index4.html')
 
 if __name__=="__main__":
     app.run("0.0.0.0")
