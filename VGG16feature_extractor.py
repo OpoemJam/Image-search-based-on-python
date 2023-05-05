@@ -2,8 +2,14 @@ from tensorflow.keras.preprocessing import image
 from tensorflow.keras.applications.vgg16 import VGG16, preprocess_input
 from tensorflow.keras.models import Model
 import numpy as np
+import os
 
 # See https://keras.io/api/applications/ for details
+'''
+IF YOU DONT HAVE GPU OR YOU JUST WANT TO USE CPU, DELTE '#' BEFORE OS.ENVIRON.
+IT'S STRONGLY RECOMMENDED TO USE GPU ACCLERATION.
+'''
+#os.environ["CUDA_VISIBLE_DEVICES"]="-1"
 
 class VGG16FeatureExtractor:
     def __init__(self):
