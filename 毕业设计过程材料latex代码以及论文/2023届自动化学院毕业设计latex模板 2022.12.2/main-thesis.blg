@@ -1,0 +1,60 @@
+This is BibTeX, Version 0.99d (TeX Live 2023)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main-thesis.aux
+The style file: hdu-thesis.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Database file #1: ref/reference.bib
+Warning--Require year: BaiduImageNet
+Warning--Require year: CNN2
+Warning--Require journal: LAZEBNIK
+Warning--Require journal: SURF
+Warning--Require citedate: CORNER
+Warning--Require journal: HARRIS
+Warning--Require journal: MORAVEC
+Warning--Require journal: PARK
+Warning--Require journal: KMEANS++
+Warning--Require journal: Li
+You've used 24 entries,
+            3113 wiz_defined-function locations,
+            883 strings with 9186 characters,
+and the built_in function-call counts, 37814 in all, are:
+= -- 4120
+> -- 76
+< -- 176
++ -- 3249
+- -- 262
+* -- 1108
+:= -- 4184
+add.period$ -- 0
+call.type$ -- 24
+change.case$ -- 104
+chr.to.int$ -- 0
+cite$ -- 34
+duplicate$ -- 5302
+empty$ -- 1458
+format.name$ -- 208
+if$ -- 10022
+int.to.chr$ -- 0
+int.to.str$ -- 24
+missing$ -- 0
+newline$ -- 99
+num.names$ -- 24
+pop$ -- 516
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 358
+stack$ -- 0
+substring$ -- 4470
+swap$ -- 1116
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 10
+while$ -- 499
+width$ -- 26
+write$ -- 344
+(There were 10 warnings)
